@@ -1,5 +1,5 @@
-README file for the isotopic box model from Skeie et al. (2023)
-***************************************************************
+# README file for the isotopic box model from Skeie et al. (2023)
+*****************************************************************
 
 Author:  Oivind Hodnebrog (oivinho@cicero.oslo.no)
 Version: 2023-06-30
