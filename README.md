@@ -23,6 +23,30 @@ Contents
 - plots/: Folder to store plots from box model simulations
 
 
+Input data that needs to be downloaded
+-------------------------------------
+- Table of global annual mean mole fractions:
+  - URL: https://gml.noaa.gov/aggi/NOAA_Annual_Mean_MoleFractions_2023.csv
+  - After downloading, set correct path in variable file_CH4_NOAA in main_BoxModel.m
+- Emissions of CH4 from CEDS:
+  - DOI: 10.5281/zenodo.4741285
+  - Filename: CH4_global_CEDS_emissions_by_sector_2021_04_21.csv (put file in data_CH4/)
+- Emissions of CH4 from EDGAR:
+  - URL: https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/EDGAR/datasets/v70_FT2021_GHG/EDGAR_CH4_1970-2021.zip
+  - After downloading, extract the zip file, open excel workbook, and save the sheet "IPCC 2006" as EDGAR_CH4_1970-2021.csv
+  - Remove the first 10 (header) lines and put the csv file in data_CH4/
+
+
+Input data provided
+-------------------
+- data_CH4/anthropogenic_emissions_gfed.txt: Ragnhild??
+- data_CH4/natemis.csv: Ragnhild??
+- data_CH4/WMGHG_vmr_SSP2-4.5: Annual CH4 mixing ratios (Meinshausen et al., 2020, 10.5194/gmd-13-3571-2020)
+- data_OH/AerChemMIP_*.txt: Ragnhild??
+- data_OH/CCMI_modelmean_OH.txt: Ragnhild??
+- data_OH/OsloCTM3_OH_histO3_ceds2021.txt: Ragnhild??
+
+
 How to reproduce figures in Skeie et al. (2023)
 -----------------------------------------------
 Figure 6a:
