@@ -2,7 +2,7 @@
 % * Simple tropospheric box model for CH4 and isotopes *
 % ******************************************************
 % * Author:  Oivind Hodnebrog (oivinho@cicero.oslo.no) *
-% * Version: 2023-06-30                                *
+% * Version: 2023-07-03                                *
 % ******************************************************
 
 clear all;
@@ -58,20 +58,20 @@ plot_spinup = 0; % 1= plot timeseries of delta13C during spin-up
 addpath('./functions');
 
 % OH datasets
-file_OH_aerchemmip      = './data_OH/AerChemMIP_modelmean_OH.txt';
-file_OH_aerchemmip_waccm= './data_OH/AerChemMIP_CESM2-WACCM_OH.txt';
-file_OH_aerchemmip_gfdl = './data_OH/AerChemMIP_GFDL_OH.txt';
-file_OH_aerchemmip_uk   = './data_OH/AerChemMIP_UK_OH.txt';
-file_OH_ccmi            = './data_OH/CCMI_modelmean_OH.txt';
-file_OH_osloctm3        = './data_OH/OsloCTM3_OH_histO3_ceds2021.txt';
+file_OH_aerchemmip      = './inputdata/AerChemMIP_modelmean_OH.txt';
+file_OH_aerchemmip_waccm= './inputdata/AerChemMIP_CESM2-WACCM_OH.txt';
+file_OH_aerchemmip_gfdl = './inputdata/AerChemMIP_GFDL_OH.txt';
+file_OH_aerchemmip_uk   = './inputdata/AerChemMIP_UK_OH.txt';
+file_OH_ccmi            = './inputdata/CCMI_modelmean_OH.txt';
+file_OH_osloctm3        = './inputdata/OsloCTM3_OH_histO3_ceds2021.txt';
 
 % CH4 datasets
-file_CH4_SSP  = './data_CH4/WMGHG_vmr_SSP2-4.5';
-file_CH4_NOAA = './data_CH4/NOAA_MoleFractions_2022.csv';
-file_CEDS     = './data_CH4/CH4_global_CEDS_emissions_by_sector_2021_04_21.csv';
-file_EDGAR    = './data_CH4/EDGAR_CH4_1970-2021.csv';
-file_GFED     = './data_CH4/anthropogenic_emissions_gfed.txt';
-file_CLM      = './data_CH4/natemis.csv';
+file_CH4_SSP  = './inputdata/WMGHG_vmr_SSP2-4.5';
+file_CH4_NOAA = './inputdata/NOAA_MoleFractions_2022.csv';
+file_CEDS     = './inputdata/CH4_global_CEDS_emissions_by_sector_2021_04_21.csv';
+file_EDGAR    = './inputdata/EDGAR_CH4_1970-2021.csv';
+file_GFED     = './inputdata/anthropogenic_emissions_gfed.txt';
+file_CLM      = './inputdata/natemis.csv';
 
 % d13C(CH4) observations, from Table S4 in Schaefer et al. (2016)
 years_dC13CH4_obs= 1988:2014;
@@ -79,11 +79,9 @@ data_dC13CH4_obs = [-47.43,-47.40,-47.37,-47.40,-47.35,-47.37,-47.31,-47.27,-47.
                     -47.21,-47.19,-47.18,-47.22,-47.20,-47.21,-47.17,-47.25,-47.31,-47.35,-47.35,-47.37,-47.37];
 
 % d13C(CH4) observations, from WMO/GAW GHG bulletin 2022
-years_dC13CH4_obs2 = 1999:2020;
-data_dC13CH4_obs2 = [-47.1197,-47.1315,-47.0970,-47.0968,-47.0703,-47.0530,-47.0914,-47.1026,-47.0968,-47.0717,-47.1443,...
-                    -47.1861,-47.2351,-47.2389,-47.2536,-47.2618,-47.2994,-47.2976,-47.3543,-47.3930,-47.4820,-47.4805];
-data_dC13CH4_obs2_unc = [0.0552,0.0434,0.0514,0.0362,0.0344,0.0331,0.0407,0.0291,0.0321,0.0360,0.0283,0.0303,0.0273,...
-                    0.0302,0.0335,0.0288,0.0243,0.0194,0.0200,0.0219,0.0248,0.0232];
+years_dC13CH4_obs2 = 1999:2020; nyears_dC13CH4_obs2 = length(years_dC13CH4_obs2);
+data_dC13CH4_obs2 = nan(nyears_dC13CH4_obs2,1); % * Note that values are set to NaN because data are not openly available
+data_dC13CH4_obs2_unc = nan(nyears_dC13CH4_obs2,1); % but received from Sylvia Englund Michel (personal communication) *
 data_dC13CH4_obs2_max = data_dC13CH4_obs2+data_dC13CH4_obs2_unc;
 data_dC13CH4_obs2_min = data_dC13CH4_obs2-data_dC13CH4_obs2_unc;
 

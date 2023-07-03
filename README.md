@@ -2,7 +2,7 @@
 ******************************************************************
 
 Author:  Oivind Hodnebrog (oivinho@cicero.oslo.no)
-Version: 2023-06-30
+Version: 2023-07-03
 
 
 Reference
@@ -15,36 +15,36 @@ Contents
 --------
 - main_BoxModel.m: Main Matlab script for running the isotopic box model
 - make_Figure6.m: Matlab script used to generate Figure 6 in the paper (see below)
-- data_CH4/: Folder with input data needed to run the box model
-- data_OH/: Folder with input data needed to run the box model
 - functions/: Folder with Matlab functions
+- inputdata/: Folder with input data needed to run the box model
 - matfiles/: Folder with box model output stored as binary "mat" files (Matlab format)
              (contains results from the 87 different box model runs used in Skeie et al.)
 - plots/: Folder to store plots from box model simulations
 
 
-Input data that needs to be downloaded
--------------------------------------
-- Table of global annual mean mole fractions:
-  - URL: https://gml.noaa.gov/aggi/NOAA_Annual_Mean_MoleFractions_2023.csv
-  - After downloading, set correct path in variable file_CH4_NOAA in main_BoxModel.m
+Input data
+----------
 - Emissions of CH4 from CEDS:
-  - DOI: 10.5281/zenodo.4741285
-  - Filename: CH4_global_CEDS_emissions_by_sector_2021_04_21.csv (put file in data_CH4/)
+  - Download from DOI: 10.5281/zenodo.4741285
+  - Filename: CH4_global_CEDS_emissions_by_sector_2021_04_21.csv (put file in inputdata/)
 - Emissions of CH4 from EDGAR:
-  - URL: https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/EDGAR/datasets/v70_FT2021_GHG/EDGAR_CH4_1970-2021.zip
+  - Download from: https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/EDGAR/datasets/v70_FT2021_GHG/EDGAR_CH4_1970-2021.zip
   - After downloading, extract the zip file, open excel workbook, and save the sheet "IPCC 2006" as EDGAR_CH4_1970-2021.csv
-  - Remove the first 10 (header) lines and put the csv file in data_CH4/
-
-
-Input data provided
--------------------
-- data_CH4/anthropogenic_emissions_gfed.txt: Ragnhild??
-- data_CH4/natemis.csv: Ragnhild??
-- data_CH4/WMGHG_vmr_SSP2-4.5: Annual CH4 mixing ratios (Meinshausen et al., 2020, 10.5194/gmd-13-3571-2020)
-- data_OH/AerChemMIP_*.txt: Ragnhild??
-- data_OH/CCMI_modelmean_OH.txt: Ragnhild??
-- data_OH/OsloCTM3_OH_histO3_ceds2021.txt: Ragnhild??
+  - Remove the first 10 (header) lines and put the csv file in inputdata/
+- Emissions of biomass burning from IPCC AR6+GFED:
+  - Run the script https://github.com/ragnhibs/Methane-trend/blob/main/figures/plot_figure_2.py
+  - Put file in inputdata/ and set correct path in variable file_GFED in main_BoxModel.m
+- Natural emissions of CH4:
+  - Exists in inputdata/natemis.csv
+- Table of global annual mean mole fractions:
+  - Download from: https://gml.noaa.gov/aggi/NOAA_Annual_Mean_MoleFractions_2023.csv
+  - After downloading, set correct path in variable file_CH4_NOAA in main_BoxModel.m
+- Annual CH4 mixing ratios from Meinshausen et al. (2020, 10.5194/gmd-13-3571-2020):
+  - Exists in inputdata/WMGHG_vmr_SSP2-4.5
+- Time evolution of OH from OsloCTM3:
+  - Exists in inputdata/OsloCTM3_OH_histO3_ceds2021.txt
+- Time evolution of OH from AerChemMIP and CCMI:
+  - See separate CH4 box model here: https://github.com/ragnhibs/Methane-trend/
 
 
 How to reproduce figures in Skeie et al. (2023)
